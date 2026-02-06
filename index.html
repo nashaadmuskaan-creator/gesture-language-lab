@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gesture Language Lab – AI Learning Platform</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">AI Education Platform</div>
+                <h1 class="hero-title">
+                    Create Your Own Language Using 
+                    <span class="highlight">AI</span> & 
+                    <span class="highlight">Hand Gestures</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Learn how machines understand humans — no coding required.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="selectMode('normal')">
+                        <span class="btn-icon">🎮</span>
+                        <div class="btn-text">
+                            <div class="btn-label">Normal Mode</div>
+                            <div class="btn-sublabel">Grades 8–10</div>
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary" onclick="selectMode('indepth')">
+                        <span class="btn-icon">🔬</span>
+                        <div class="btn-text">
+                            <div class="btn-label">In-Depth Mode</div>
+                            <div class="btn-sublabel">Grades 11–12</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">✋</div>
+                    <h3 class="step-title">Show a Hand Gesture</h3>
+                    <p class="step-description">AI tracks 21 points on your hand in real-time</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">📸</div>
+                    <h3 class="step-title">Record Examples</h3>
+                    <p class="step-description">Collect samples to teach the AI your symbols</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🧠</div>
+                    <h3 class="step-title">Train AI Model</h3>
+                    <p class="step-description">Machine learns patterns in your browser</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">💬</div>
+                    <h3 class="step-title">Build Sentences</h3>
+                    <p class="step-description">Translate gestures into words instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Students Learn -->
+    <section class="learning-outcomes">
+        <div class="container">
+            <h2 class="section-title">What Students Learn</h2>
+            <div class="outcomes-grid">
+                <div class="outcome-card">
+                    <div class="outcome-icon">👁️</div>
+                    <h3>How AI Sees Hands</h3>
+                    <p>Understand computer vision and landmark detection</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon">📊</div>
+                    <h3>Why Data Matters</h3>
+                    <p>Experience how more examples improve accuracy</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon">🔤</div>
+                    <h3>Symbols Become Language</h3>
+                    <p>Build your own communication system from scratch</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon">⚠️</div>
+                    <h3>Why AI Makes Mistakes</h3>
+                    <p>Learn about confidence, training data, and limitations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mode Selection Cards -->
+    <section class="modes">
+        <div class="container">
+            <h2 class="section-title">Choose Your Learning Path</h2>
+            <div class="modes-grid">
+                <div class="mode-card">
+                    <div class="mode-badge normal">Grades 8–10</div>
+                    <h3 class="mode-title">Normal Mode</h3>
+                    <p class="mode-description">Explore & Play</p>
+                    <ul class="mode-features">
+                        <li>✓ Simple interface</li>
+                        <li>✓ One-click training</li>
+                        <li>✓ Friendly explanations</li>
+                        <li>✓ Focus on creativity</li>
+                    </ul>
+                    <button class="btn btn-mode" onclick="selectMode('normal')">Start Exploring</button>
+                </div>
+                <div class="mode-card featured">
+                    <div class="mode-badge indepth">Grades 11–12</div>
+                    <h3 class="mode-title">In-Depth Mode</h3>
+                    <p class="mode-description">Analyze & Build</p>
+                    <ul class="mode-features">
+                        <li>✓ Dataset visibility</li>
+                        <li>✓ Confidence percentages</li>
+                        <li>✓ Model retraining</li>
+                        <li>✓ Data export (JSON)</li>
+                    </ul>
+                    <button class="btn btn-mode" onclick="selectMode('indepth')">Start Building</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Gesture Language Lab – An interactive AI education platform for schools
+            </p>
+            <p class="footer-subtext">
+                Built with MediaPipe & TensorFlow.js • No installation required
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/landing.js"></script>
+</body>
+</html>

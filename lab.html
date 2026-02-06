@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lab – Gesture Language Lab</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/lab.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="lab-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="lab-title">AI Gesture Lab</h1>
+                <div class="header-actions">
+                    <span id="mode-indicator" class="mode-badge"></span>
+                    <a href="index.html" class="btn-back">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Lab Area -->
+    <main class="lab-container">
+        <!-- Left Panel: Camera & Vision -->
+        <section class="panel panel-camera">
+            <div class="panel-header">
+                <h2 class="panel-title">Camera View</h2>
+                <span id="hand-status" class="status-indicator">No hand detected</span>
+            </div>
+            <div class="camera-wrapper">
+                <video id="webcam" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="camera-info">
+                <p class="info-text">AI tracks 21 landmarks on your hand</p>
+            </div>
+        </section>
+
+        <!-- Center Panel: Controls -->
+        <section class="panel panel-controls">
+            <div class="panel-header">
+                <h2 class="panel-title">Training Controls</h2>
+            </div>
+            
+            <div class="control-section">
+                <label for="symbol-name" class="control-label">Symbol Name</label>
+                <input 
+                    type="text" 
+                    id="symbol-name" 
+                    class="input-field" 
+                    placeholder="e.g., Hello, Peace, A, B..."
+                    maxlength="20"
+                >
+            </div>
+
+            <div class="control-section">
+                <button id="btn-record" class="btn btn-record" disabled>
+                    <span class="btn-icon">📸</span>
+                    Record Sample
+                </button>
+                <div id="sample-counter" class="counter">0 samples collected</div>
+            </div>
+
+            <!-- In-Depth Mode: Dataset Viewer -->
+            <div id="dataset-viewer" class="control-section dataset-viewer hidden">
+                <h3 class="subsection-title">Dataset Overview</h3>
+                <div id="dataset-list" class="dataset-list">
+                    <p class="empty-state">No data collected yet</p>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <button id="btn-train" class="btn btn-primary" disabled>
+                    <span class="btn-icon">🧠</span>
+                    Train AI Model
+                </button>
+                <div id="training-status" class="status-text"></div>
+            </div>
+
+            <!-- In-Depth Mode: Advanced Controls -->
+            <div id="advanced-controls" class="control-section advanced-controls hidden">
+                <button id="btn-retrain" class="btn btn-secondary" disabled>
+                    <span class="btn-icon">🔄</span>
+                    Retrain Model
+                </button>
+                <button id="btn-export" class="btn btn-secondary" disabled>
+                    <span class="btn-icon">💾</span>
+                    Export Dataset
+                </button>
+            </div>
+
+            <!-- In-Depth Mode: Error Insights -->
+            <div id="error-insights" class="control-section error-insights hidden">
+                <h3 class="subsection-title">Error Insights</h3>
+                <div id="error-content" class="error-content">
+                    <p class="empty-state">No errors detected yet</p>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <button id="btn-reset" class="btn btn-danger">
+                    <span class="btn-icon">🗑️</span>
+                    Reset All Data
+                </button>
+            </div>
+        </section>
+
+        <!-- Right Panel: Output -->
+        <section class="panel panel-output">
+            <div class="panel-header">
+                <h2 class="panel-title">Live Translation</h2>
+            </div>
+
+            <div class="prediction-area">
+                <div id="prediction-result" class="prediction-result">
+                    <div class="prediction-symbol">—</div>
+                    <div id="confidence-display" class="confidence-display hidden">
+                        Confidence: <span id="confidence-value">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sentence-builder">
+                <div class="sentence-header">
+                    <h3 class="subsection-title">Your Sentence</h3>
+                    <button id="btn-clear-sentence" class="btn-small">Clear</button>
+                </div>
+                <div id="sentence-output" class="sentence-output">
+                    <p class="empty-state">Gestures will appear here...</p>
+                </div>
+            </div>
+
+            <div class="output-info">
+                <p class="info-text">Make a gesture and hold steady</p>
+            </div>
+
+            <!-- In-Depth Mode: Error Insights -->
+            <div id="error-insights" class="error-insights hidden">
+                <h3 class="subsection-title">Error Insights</h3>
+                <div id="error-content" class="error-content">
+                    <p class="empty-state">No mismatches detected yet</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    
+    <script src="js/config/modes.js"></script>
+    <script src="js/core/camera.js"></script>
+    <script src="js/core/hands.js"></script>
+    <script src="js/core/dataset.js"></script>
+    <script src="js/core/trainer.js"></script>
+    <script src="js/core/predictor.js"></script>
+    <script src="js/ui/controls.js"></script>
+    <script src="js/ui/panels.js"></script>
+    <script src="js/ui/output.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
